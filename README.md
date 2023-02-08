@@ -12,12 +12,8 @@ Note:
 On our computer the database file called 'sqlitedb.file' is saved in the main folder containing the code. But on some computers when the code is ran, a new database file is created in a 'instance' folder. If it is the case,replace the created file in the 'instance' folder with our saved file by copying and pasting it.
 
 Login informations:
-To login with users already created, we have: email - password
-linaamrani@dauphine.eu - linaamrani
-dinabenmoussa@dauphine.eu - dinabenmoussa
-nadabennani@dauphine.eu - nadabennani
-mehdiinane@dauphine.eu - mehdiinane
-farahellouze@dauphine.eu - farahellouze
+To login with users already created, use: email - password
+
 
 Installation requirements:
 If necessary, install the following requirements by running the line :
