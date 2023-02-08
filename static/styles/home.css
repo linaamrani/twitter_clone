@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+.header img {
+    float: left;
+    width: 54px;
+    height: 54px;
+  }
+
+
+
+input[type="submit"]:hover {
+	border-color: #1da1f3;
+	transition: .5s;
+}
+
+
+
+
+.menu {
+    display: flex;
+    padding: 0;
+    background-color:#1da1f3;
+    justify-content: flex-end;
+}
+
+.menu li{
+    list-style-type: none;
+}
+.menu a{
+    display: block;
+    min-width: 120px;
+
+    margin: 0.5rem;
+    padding: 0.4rem 0;
+    text-align: center;
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+    
+}
+.menu a:hover{
+
+    background-color: #fff;
+    color: #1da1f3;
+    text-decoration: none;
+    
+}
+.header{
+    background-color:#1da1f3;
+    height: 50px;
+}
+
+.cadre_scroll{
+  overflow: scroll;
+  max-height: 500px;
+}
+
+
+
+.tout div{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+
+
+form .txt_field{
+  position: relative;
+  margin: 10px 0;
+  width: 150px;
+  
+}
+
+.txt_field label{
+  position: relative;
+  top: 10%;
+  left: 5px;
+  right: 5px;
+  color:#a8a1a1 ;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+
+.columnleft {
+  float: left;
+  width: 70%;
+}
+.columnrighttop {
+  float: right;
+  overflow: scroll;
+  position: fixed ;
+  margin-left: 70%;
+  border-radius: 25px;
+  max-height: 40%;
+  height: auto;
+  margin-top: 5%;
+  width: 30%;
+  top: 10%;
+}
+
+.columnrightbottom {
+  float: right;
+  overflow: scroll;
+  position: fixed ;
+  margin-left: 70%;
+  margin-top: 20%;
+  max-height :35%;
+  border-radius: 25px;
+  width: 30%;
+  
+  
+}
+
+.columnrighttop h4{
+  margin-top: 10px;
+}
+
+.columnrighttop a{
+  display: inline-block;
+  min-width: 20px;
+  float:right;
+  border-radius: 5px;
+  background-color:#1da1f3;
+  color: #fff;
+  text-decoration: none;
+  padding: 3px;
+}
+.columnrightbottom a{
+  display: inline-block;
+  min-width: 20px;
+  background-color:#1da1f3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  float: right;
+  padding: 3px;
+}
+
+.suggestions input{
+  display: inline-block;
+  min-width: 20px;
+
+  background-color:#1da1f3;
+  color: #fff;
+  text-decoration: none;
+}
+
+.columnleft a{
+  display: inline-block;
+  min-width: 20px;
+  border-radius: 5px;
+  background-color:#1da1f3;
+  color: #fff;
+  text-decoration: none;
+  padding: 3px;
+}
+
+.form-tweet{
+  min-width: 200px;
+  min-height: 50px;
+}
+
+.menu input{
+  border-radius: 10px;
+  height: 40px;
+  width: 25%;
+  text-decoration: none;
+  border-style: none;
+  margin-left: 0px;
+  position: absolute;
+  left:40%;
+  top: 8px;
+  
+}
+.menu button{
+  border-radius: 10px;
+  background-color: #fff;
+  color: #1da1f3;
+  width: 50px;
+  text-decoration: none;
+  float: right;
+  border-style: none;
+  position: absolute;
+  left:60%;
+  top: 20px;
+}
+
+.flashes{
+  background-color: rgb(139, 232, 139);
+  margin-top: 5px;
+  border-radius: 10px;
+  opacity: 0.5;
+  height: 50px;
+
+}
+.flash_text{
+  text-align: center;
+  color: rgb(27, 26, 26);
+  font-size: 1.2rem;
+}
+
+.myprofile {
+  position: absolute;
+  right:60px;
+  top: 60px;
+  display: block;
+  min-width: 120px;
+  margin: 0.5rem;
+  padding: 0.4rem 0;
+  text-align: center;
+  background-color:#1da1f3;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.myprofile :hover{
+
+  background-color: #fff;
+  color: #1da1f3;
+  text-decoration: none;
+  
+}
+.columnleft img{
+  height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.form-tweet{
+  border-radius: 10px;
+  height: 40px;
+  width: 25%;
+  text-decoration: none;
+  border-width: 1px;
+  border-style:solid;
+  border-color: #a8a1a1;
+}
+.form-title{
+  border-radius: 10px;
+  height: 40px;
+  width: 25%;
+  text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a8a1a1;
+}
+.center button{
+  min-width: 20px;
+  background-color:#8e8d8d;
+  color: #fff;
+  text-decoration: none;
+  border-style: none;
+  border-radius: 5px;
+  
+}
+.columnleft .tweet{
+  border-radius: 10px;
+}
+
