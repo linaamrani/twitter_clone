@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/styles/myprofile.css" />
+  </head>
+  <body class="cadre_scroll">
+    <div class="header">
+      <a href="/template/home.html">
+        <img src="/static/logo_twitter.jpeg" alt="logo"
+      /></a>
+
+      <ul class="menu">
+        <ul>
+          <h3>Profile</h3>
+        </ul>
+        <form method="POST" action="{{ url_for('search')}}" class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            ,
+            name="searched"
+          />
+          <button class="search" type="submit">Search</button>
+        </form>
+        <li>
+          <a href="/template/home.html">Home</a>
+        </li>
+        <li>
+          <a href="/myprofile">My Profile</a>
+        </li>
+        <li>
+          <a href="/template/login.html">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="info">
+      <ul>
+        <li><img src="/static/profile.jpeg" alt="profile" /></li>
+        <li style="font-weight: 600">@{{user.username}}</li>
+        <li style="color: gray">{{user.email}}</li>
+      </ul>
+      
+    </div>
+    <div >
+      <nav>
+        <ul>
+          <li class="deroulant"><a href="#" >Followers &ensp;</a>
+            <ul class="sous"  style="background-color: rgb(148, 196, 241)">
+              {% from '_formhelp.html' import render_field %} {% if
+                  users_following_uid|length ==0 %}
+                  <p>You have 0 followers.</p>
+                  {% endif %}
+          
+                  <div id="follower" class="follower">
+                    {% for user in users_following_uid %}
+                    <ul>
+                    <p class="uf" style="font-size: 15px">
+                      {{user.username}} 
+                    </p>
+                    </ul>
+                    {% endfor %}
+                    
+                  </div>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="data">
+      <ul>
+        <li class="nbr" style="font-weight: 600">
+          {{users_following_uid|length}} followers
+        </li>
+        <li class="nbr" style="font-weight: 600">
+          {{users_followed|length}} followings
+        </li>
+      </ul>
+    </div>
+    <div class="columnrighttop" style="background-color: rgb(148, 196, 241)">
+      <h4>Following suggestions</h4>
+      {% from '_formhelp.html' import render_field %} {% if
+      users_not_followed|length ==0 %}
+      <p>No user to follow. You already follow everyone!</p>
+      {% endif %} {% for user in users_not_followed %}
+      <div
+        class="suggestions"
+        style="
+          padding: 10px;
+          background-color: rgb(255, 255, 255);
+          margin: 10px;
+        "
+      >
+        <p style="font-size: 15px">
+          {{user.username}}
+          <a href="/follow/{{user.id}}" class="btn btn-outline-danger btn sm"
+            >Follow</a
+          >
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="columnrightbottom" style="background-color: rgb(148, 196, 241)">
+      <h4>Followings</h4>
+      {% from '_formhelp.html' import render_field %} {% if
+      users_followed|length ==0 %}
+      <p style="margin-left: 10px">You don't follow anyone.</p>
+      {% endif %} {% for user in users_followed %}
+      <div
+        class="followings"
+        style="
+          padding: 10px;
+          background-color: rgb(255, 251, 251);
+          margin: 10px;
+        "
+      >
+        <p style="font-size: 15px">
+          {{user.username}}
+          <a href="/unfollow/{{user.id}}" class="btn btn-outline-danger btn sm"
+            >Unfollow</a
+          >
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+    <div class="my_tweets">
+        <h4>Tweets</h4>
+        {% if user_tweets|length != 0 %}
+        {% for tweet in user_tweets %}
+        <div class="tweet" style="padding: 10px; background-color: #eee; margin: 20px">
+            <img src="/static/profile.jpeg" alt="profile" />
+             @{{user.username}}
+            <p style="font-size: 24px">{{loop.index}}. {{tweet.title}}</p>
+            <p style="font-size: 18px">{{tweet.content}}</p>
+            <ul>
+            <li><p style="font-size: 14px" >{{ tweet.likes.count() }} likes</p></li>
+        </ul>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% if user_tweets|length == 0 %}
+    <p> You have no tweet</p>
+    {% endif %}
+  </body>
+</html>
+

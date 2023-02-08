@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/styles/home.css" />
+  </head>
+
+  <body class="cadre_scroll">
+    <div class="header">
+      <img src="/static/logo_twitter.jpeg" alt="logo" />
+      <ul class="menu">
+        <li>
+          <a href="/template/login.html">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tout">
+      <div class="columnleft">
+        {% for tweet in tweets %} {% if tweet.id == tweet_id %}
+        <div style="padding: 10px; background-color: #eee; margin: 20px">
+          {% for u in all_users%} {%if u.id == tweet.uid%} @{{u.username}} {%
+          endif %} {% endfor %}
+          <p style="font-size: 24px">{{loop.index}}. {{tweet.title}}</p>
+          <p style="font-size: 18px">{{tweet.content}}</p>
+
+          <p style="font-size: 14px" , align="center">
+            {% if current_user.has_liked_tweet(tweet) %}
+            <a
+              class="button"
+              id="heart"
+              href="{{ url_for('like', tweet_id=tweet.id, action='unlike') }}"
+              >Unlike</a
+            >
+            {% else %}
+            <a
+              class="button"
+              id="heart"
+              href="{{ url_for('like', tweet_id=tweet.id, action='like') }}"
+              >Like</a
+            >
+            {% endif %} {{ tweet.likes.count() }} likes
+            <a href="/retweet/{{tweet.id}}">Retweet</a>
+            <a href="/reply/{{tweet.id}}">Reply</a>
+            {% if tweet.uid == user.id %}
+
+            <a href="/delete/{{tweet.id}}" class="btn btn-outline-danger btn sm"
+              >Delete</a
+            >
+            {% endif %}
+          </p>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

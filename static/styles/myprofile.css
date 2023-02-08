@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+.header img {
+    float: left;
+    width: 54px;
+    height: 54px;
+  }
+
+h3 {
+    height: 54px;
+    position: absolute;  
+    left:150px;
+    top: 15px;
+    color:#fff;
+}
+
+input[type="submit"]:hover {
+	border-color: #1da1f3;
+	transition: .5s;
+}
+
+
+
+
+.menu {
+    display: flex;
+    padding: 0;
+    background-color:#1da1f3;
+    justify-content: flex-end;
+}
+
+.menu li{
+    list-style-type: none;
+}
+.menu a{
+    display: block;
+    min-width: 100px;
+
+    margin: 0.5rem;
+    padding: 0.4rem 0;
+    text-align: center;
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+    
+}
+.menu a:hover{
+
+    background-color: #fff;
+    color: #1da1f3;
+    text-decoration: none;
+    
+}
+.header{
+    background-color:#1da1f3;
+    height: 54px;
+}
+
+.cadre_scroll{
+  overflow: scroll;
+  max-height: 500px;
+}
+
+
+
+.tout div{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+.columnleft {
+  
+    float: left;
+    width: 60%;
+    margin-top: 250px;
+    border-radius: 10px;
+    
+  }
+  .columnrighttop {
+    float: right;
+    overflow: scroll;
+    position: fixed ;
+    margin-left: 70%;
+    border-radius: 25px;
+    max-height: 40%;
+    height: auto;
+    margin-top: 5%;
+    margin-bottom:60% ;
+    width: 30%;
+    top: 10%;
+  }
+  
+  .columnrightbottom {
+    float: right;
+    overflow: scroll;
+    position: fixed ;
+    margin-left: 70%;
+    margin-top: 35%;
+    max-height :35%;
+    height:auto;
+    border-radius: 25px;
+    width: 30%;
+    
+  }
+    
+  h4{
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  
+  .columnrighttop a{
+    display: inline-block;
+    min-width: 20px;
+    float:right;
+    border-radius: 5px;
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+    
+  }
+  .columnrightbottom a{
+    display: inline-block;
+    min-width: 20px;
+  
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+  }
+  
+  .suggestions input{
+    display: inline-block;
+    min-width: 20px;
+  
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .columnleft a{
+    display: inline-block;
+    min-width: 20px;
+    border-radius: 5px;
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .menu input{
+    border-radius: 10px;
+    height: 40px;
+    width: 25%;
+    text-decoration: none;
+    border-style: none;
+    margin-left: 0px;
+    position: absolute;
+    left:40%;
+    top: 8px;
+    min-width: auto;
+    
+  }
+  .menu button{
+    border-radius: 10px;
+    background-color: #fff;
+    color: #1da1f3;
+    width: 50px;
+    text-decoration: none;
+    float: right;
+    border-style: none;
+    position: absolute;
+    left:60%;
+    top: 20px;
+  }
+  
+
+  
+  .delete {
+    display: inline-block;
+    min-width: 20px;
+  
+    background-color:#e35745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 2px;
+  }
+  .delete a{
+    color: #fff;
+    padding: 3px;
+    text-decoration: none;
+  }
+
+
+  .columnleft li{
+    display: inline-block;
+    list-style-type: none;
+
+}
+.nbr{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: rgb(102, 102, 102);
+}
+
+.info ul{
+    list-style: none;
+    display: inline-block;
+    position: absolute;
+    top:100px;
+    left: 50px;
+}
+
+.data ul{
+    list-style: none;
+    display: inline-block;
+    position: absolute;
+    top:200px;
+    left: 50px;
+}
+.info img{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+
+}
+
+
+.my_tweets {
+    float: left;
+    width: 70%;
+    position: absolute;
+    top: 250px;
+
+    height: auto;
+  }
+.my_tweets a{
+    display: inline-block;
+    min-width: 20px;
+    border-radius: 5px;
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+
+  }
+  .my_tweets img{
+    height: 25px;
+      width: 25px;
+      border-radius: 50%;
+  }
+  .my_tweets ul{
+    list-style: none;
+    display: inline-block;
+  }
+  .my_tweets li{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: rgb(102, 102, 102);
+}
+
+
+.my_tweets .tweet{
+    border-radius: 10px;
+  }
+
+ 
+
+  *{
+    margin: 0px;
+    padding: 0px;
+    font-family: Avenir, sans-serif;
+}
+
+nav{
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    position: absolute;
+    top: 120px;
+    left: 400px;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+
+
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+nav > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+}
+
+.deroulant{
+    background-color: rgb(148, 196, 241);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    max-height: 100px;
+}
+
+.deroulant > a::after{
+    content:" ▼";
+    font-size: 12px;
+    
+    
+}
+.follower{
+  color:black;
+}
+
+.follower p{
+  
+  min-width: 20px;
+  min-height: 40px;
+  background-color:#fff;
+  text-decoration: none;
+  border-radius: 5px;
+  float: left;
+}
+
+
+.conteneur{
+  margin: 50px 20px;
+  height: 1500px;
+  
+}
+.uf{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  display:list-item;
+  border-radius: 10px;
+  width: 100%;
+}
+.follower a{
+    border-radius: 5px;
+    background-color:#1da1f3;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+

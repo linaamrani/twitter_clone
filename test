@@ -1,0 +1,15 @@
+<div class="center">
+  <h1 align="center">Tweets</h1>
+  <ul class="list-group list-group-flush" id="tweets">
+    {% for tweet in tweets %}
+    <li class="list-group-item">
+      {{ tweet.data }}
+      <button type="button" class="close" onClick="deleteNote({{ tweet.id }})">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<input method="DELETE" class="delete" type="submit" value="Delete" />

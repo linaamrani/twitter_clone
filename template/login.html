@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Twitter_Login</title>
+    <link rel="stylesheet" href="/static/styles/login.css" />
+  </head>
+  <body class="cadre_scroll">
+    <div class="header">
+      <img src="/static/logo_twitter.jpeg" alt="logo" />
+      <ul class="menu">
+        <li>
+          <a href="/template/login.html">Login</a>
+        </li>
+        <li>
+          <a href="/template/register.html">Register</a>
+        </li>
+      </ul>
+    </div>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+      <p class="flash_text">{{ message }}</p>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <div class="center">
+      <h1>Login</h1>
+      {% from '_formhelp.html' import render_field %}
+      <form method="POST">
+        <div class="txt_field">
+          <label>Email</label>
+          {{ render_field(form.email, class_ = "input field") }}
+        </div>
+        <div class="txt_field">
+          <label>Password</label>
+          {{ render_field(form.password, class_ = "input field") }}
+        </div>
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+    {% if error|length != 0 %}
+    <div class="error"><p class="error_text">{{error}}</p></div>
+    {% endif %}
+  </body>
+</html>

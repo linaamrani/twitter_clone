@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/styles/home.css" />
+  </head>
+
+  <body class="cadre_scroll">
+    <div class="header">
+      <img src="/static/logo_twitter.jpeg" alt="logo" />
+      <ul class="menu">
+        <form method="POST" action="{{ url_for('search')}}" class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            ,
+            name="searched"
+          />
+          <button class="search" type="submit">Search</button>
+        </form>
+        <li>
+          <a href="/template/home.html">Home</a>
+        </li>
+        <li>
+          <a href="/template/login.html">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h2>You searched for ... {{ word_searched }}</h2>
+    </div>
+    <div class="columnleft">
+      {% if word_searched|length != 0 %} {% if ids|length != 0 %} {% for id in
+      ids %}
+      <div style="padding: 10px; background-color: #eee; margin: 20px">
+        {% for u in all_users%} {%if u.id == tweets.get(id)[0] %}
+        <a
+          style="background-color: #eee; color: rgb(92, 91, 91)"
+          href="/profile/{{u.id}}"
+          >@{{u.username}} </a
+        >{% endif %} {% if u in users_not_followed and u.id == tweets.get(id)[0]
+        %}
+
+        <a
+          href="/follow/{{u.id}}"
+          style="float: right; border-radius: 5px"
+          class="btn btn-outline-danger btn sm"
+          >Follow</a
+        >
+
+        {% endif %}{% endfor %}
+
+        <p style="font-size: 24px">{{loop.index}}. {{ tweets.get(id)[1]}}</p>
+        <p style="font-size: 18px">{{ tweets.get(id)[2] }}</p>
+
+        <p style="font-size: 14px" , align="center">
+          {% if current_user.has_liked_tweet(tweets.get(id)[4]) %}
+          <a
+            class="button"
+            id="heart"
+            href="{{ url_for('like', tweet_id=id, action='unlike') }}"
+            >Unlike</a
+          >
+          {% else %}
+          <a
+            class="button"
+            id="heart"
+            href="{{ url_for('like', tweet_id=id, action='like') }}"
+            >Like</a
+          >
+          {% endif %} {% if tweets.get(id)[3].count() !=0 %} {{
+          tweets.get(id)[3].count() }} likes {% endif %}
+        </p>
+      </div>
+
+      {% endfor %}{% endif %} {% endif %} {% if ids|length == 0 %}
+      <p style="position: absolute; left: 20px; top: 100px">
+        There is no tweet containing the word you searched
+      </p>
+      {% endif %} {% if word_searched|length == 0 %}
+      <p style="position: absolute; left: 20px; top: 100px">
+        There is no tweet containing the word you searched
+      </p>
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/styles/home.css" />
+  </head>
+
+  <body class="cadre_scroll">
+    <div class="header">
+      <img src="/static/logo_twitter.jpeg" alt="logo" />
+      <ul class="menu">
+        <form method="POST" action="{{ url_for('search')}}" class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            ,
+            name="searched"
+          />
+          <button class="search" type="submit">
+            Search
+          </button>
+        </form>
+        <li>
+          <a href="/myprofile">My Profile</a>
+        </li>
+        <li>
+          <a href="/template/login.html">Logout</a>
+          
+        </li>
+      </ul>
+    </div>
+    
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+      <p class="flash_text">{{ message }}</p>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    <div class="tout">
+      <div class="center" align="center">
+        <h1 align="center">Tweets</h1>
+        {% from '_formhelp.html' import render_field %}
+        <form method="POST">
+          <div>
+            <input
+              class="form-title"
+              type="Title"
+              placeholder="Title"
+              aria-label="Title"
+              ,
+              name="Title"
+            />
+          </div>
+          <div>
+            <input
+              class="form-tweet"
+              type="Tweet"
+              placeholder="Tweet"
+              aria-label="Tweet"
+              ,
+              name="Tweet"
+            />
+          </div>
+          <div align="center">
+            <p>
+              <button type="submit" class="btn btn-primary">Post Tweet</button>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="columnleft">
+        {% for tweet in tweets %}
+        <div class="tweet" style="padding: 10px; background-color: #eee; margin: 20px">
+          <img src="/static/profile.jpeg" alt="profile" />
+          {% for u in all_users%} {% if u.id == tweet.uid %}
+          {% if u.id == current_user.id %}
+          <a style="background-color: #eee; color: rgb(92, 91, 91);" href="/myprofile">@{{u.username}}</a> 
+          {% endif %}
+          {% if u.id != current_user.id %}
+           <a style="background-color: #eee; color: rgb(92, 91, 91);" href="/profile/{{u.id}}">@{{u.username}}</a> 
+           {% endif %}
+           {%
+          endif %} {% endfor %}
+          <p style="font-size: 24px">{{loop.index}}. {{tweet.title}}</p>
+          <p style="font-size: 18px">{{tweet.content}}</p>
+
+          <p style="font-size: 14px" , align="center">
+            {% if current_user.has_liked_tweet(tweet) %}
+            <a
+              class="button"
+              id="heart"
+              href="{{ url_for('like', tweet_id=tweet.id, action='unlike') }}"
+              >Unlike</a
+            >
+            {% else %}
+            <a
+              class="button"
+              id="heart"
+              href="{{ url_for('like', tweet_id=tweet.id, action='like') }}"
+              >Like</a
+            >
+            {% endif %} {% if tweet.likes.count() !=0 %} {{ tweet.likes.count() }} likes
+            {% endif %}
+            {% if tweet.uid == user.id %}
+
+            <a href="/delete/{{tweet.id}}" class="delete_tweet"
+              >Delete</a
+            >
+            {% endif %}
+          </p>
+        </div>
+
+        {% endfor %}
+      </div>
+      <div class="columnrighttop" style="background-color: rgb(148, 196, 241)">
+        <h4>Following suggestions</h4>
+        {% from '_formhelp.html' import render_field %} 
+          {% if users_not_followed|length ==0 %}
+            <p>No user to follow. You already follow everyone!</p>
+          {% endif %}
+        {% for user in
+        users_not_followed %}
+        <div
+          class="suggestions"
+          style="
+            padding: 10px;
+            background-color: rgb(255, 255, 255);
+            margin: 10px;
+          "
+        >
+          <p style="font-size: 15px">
+            {{user.username}}
+            <a href="/follow/{{user.id}}" class="btn btn-outline-danger btn sm" 
+              >Follow</a
+            >
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="columnrightbottom" style="background-color: rgb(148, 196, 241)">
+        <h4>Followings</h4>
+        {% from '_formhelp.html' import render_field %} 
+        {% if users_followed|length ==0 %}
+            <p>You don't follow anyone.</p>
+          {% endif %}
+        {% for user in
+        users_followed %}
+        <div
+          class="followings"
+          style="
+            padding: 10px;
+            background-color: rgb(255, 251, 251);
+            margin: 10px;
+          "
+        >
+          <p style="font-size: 15px">
+            {{user.username}}
+            <a
+              href="/unfollow/{{user.id}}"
+              class="btn btn-outline-danger btn sm"
+              >Unfollow</a
+            >
+          </p>
+        </div>
+        {% endfor %}
+        
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
